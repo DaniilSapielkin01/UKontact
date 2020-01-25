@@ -1,0 +1,42 @@
+html,
+body {
+  background: rgb(220, 231, 239);
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+.wrapper {
+  display: grid;
+  min-height: 100%;
+  width: 1180px;
+  margin: auto;
+  padding: 0 10px;
+  grid-template-areas:
+    "h h"
+    "n c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.app-wrapper-content {
+  grid-area: c;
+  height: 100%;
+  background: white;
+  border-radius: 7px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(124, 193, 250, 0.3);
+}
+
+/* preloader */
+.ant-spin-spinning {
+  width: 100%;
+}
+
+.ant-spin-dot-spin {
+  height: 30px;
+  width: 30px;
+}

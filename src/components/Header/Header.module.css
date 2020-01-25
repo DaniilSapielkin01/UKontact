@@ -1,0 +1,31 @@
+.header {
+  grid-area: h;
+  position: relative;
+  background-color: rgb(47, 117, 175);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+}
+
+.header img {
+  object-fit: cover;
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  border-radius: 3px;
+}
+
+.nameLogo {
+  position: relative;
+  font-size: 23px;
+  font-weight: 900;
+  margin-left: 80px;
+  align-items: center;
+  color: white;
+  font-family: "Oswald", sans-serif;
+}
+
+.toLogin {
+  margin-left: 50px;
+}

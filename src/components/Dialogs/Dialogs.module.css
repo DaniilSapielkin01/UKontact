@@ -1,0 +1,72 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  margin: 10px 0;
+  height: 100%;
+}
+.dialogsItem {
+  padding: 10px;
+  margin-right: 10px;
+  border-right: 1px solid #dce7ef;
+}
+.dialog {
+  margin: 10px 5px;
+}
+.dialog > * {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+.dialog .active {
+  color: #f8b831;
+}
+
+.message {
+  border-bottom: 1px solid #dce7ef;
+  margin: 5px;
+  padding: 5px 0;
+}
+.iconProfile {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.nameProfile {
+  font-size: 17px;
+  margin: 5px;
+}
+.linkMessage {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  padding: 4px 0;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.linkMessage:hover {
+  color: #f8b831;
+}
+.blockInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.messageSend {
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.messageSend textarea {
+  height: 35px;
+  resize: none;
+  width: 55%;
+  padding: 2px 5px;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 13px;
+  border: 1px solid #73a6ca;
+  margin: 5px;
+}
+.messages {
+  margin-bottom: 10px;
+}

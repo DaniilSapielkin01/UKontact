@@ -1,0 +1,14 @@
+.newpost {
+  border-radius: 5px;
+  padding: 5px 0;
+  margin: 5px 0;
+}
+.newpost textarea {
+  height: 35px;
+  resize: none;
+  width: 55%;
+  padding: 2px 5px;
+  border-radius: 4px;
+  outline: 0;
+  font-size: 13px;
+}
