@@ -1,3 +1,5 @@
+import { usersAPI } from "../api/api";
+
 const SET_USERS = "SET_USERS";
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -14,6 +16,7 @@ let initialState = {
   isFetching: false,
   followingInProgress: []
 };
+
 export const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW:

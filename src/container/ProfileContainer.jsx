@@ -5,12 +5,15 @@ import { withRouter } from "react-router-dom";
 import { Profile } from "../components/Profile/Profile";
 import { connect } from "react-redux";
 import { setUserProfile } from "../redux/index";
+import { usersAPI } from "../api/api";
 
 class ProfileComponent extends React.Component {
   componentDidMount() {
     let userId = this.props.match.params.userId;
-    let url = `https://social-network.samuraijs.com/api/1.0/profile/${userId}`;
-    axios.get(url).then(response => {
+    if (!userId) {
+      userId = 2;
+    }
+    usersAPI.getProfile(userId).then(response => {
       this.props.setUserProfile(response.data);
     });
   }

@@ -4,7 +4,7 @@ import { Spin } from "antd";
 
 import {
   follow,
-  unFollow,
+  unfollow,
   setCurrentPage,
   toggleFollowingProgress,
   getUsers
