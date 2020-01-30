@@ -1,11 +1,10 @@
 import React from "react";
-import * as axios from "axios";
 import { withRouter } from "react-router-dom";
 
 import { Profile } from "../components/Profile/Profile";
 import { connect } from "react-redux";
-import { setUserProfile } from "../redux/index";
-import { usersAPI } from "../api/api";
+import { getUserProfile } from "../redux/index";
+import { compose } from "redux";
 
 class ProfileComponent extends React.Component {
   componentDidMount() {
@@ -13,12 +12,11 @@ class ProfileComponent extends React.Component {
     if (!userId) {
       userId = 2;
     }
-    usersAPI.getProfile(userId).then(response => {
-      this.props.setUserProfile(response.data);
-    });
+    this.props.getUserProfile(userId);
   }
 
   render() {
+
     return <Profile {...this.props} profile={this.props.profile} />;
   }
 }
@@ -27,12 +25,11 @@ const mapStateToProps = state => ({
   profile: state.profilePage.profile
 });
 const mapDispatchToProps = {
-  setUserProfile
+  getUserProfile
 };
 
-let withUrlDataContanerComponent = withRouter(ProfileComponent);
-
-export const ProfileContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withUrlDataContanerComponent);
+export const ProfileContainer = compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withRouter
+  // withAuthRedirect
+)(ProfileComponent);

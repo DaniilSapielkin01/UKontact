@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 import { DialogItem } from "./DialogItem/DialogItem";
 import { Message } from "./Message/Message";
@@ -21,6 +22,8 @@ export const Dialogs = props => {
     let text = e.target.value;
     props.updateNewMessageBody(text);
   };
+
+  if (!props.isAuth) return <Redirect to={"/login"} />;
 
   return (
     <div className={s.dialogs}>

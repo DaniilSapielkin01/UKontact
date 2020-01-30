@@ -9,23 +9,20 @@ import {
   ProfileContainer,
   HeaderContainer
 } from "./container/index";
+import { Login } from "./components";
 
-function App(props) {
+function App() {
+  // console.log(props.store);
+
   return (
     <div className="wrapper">
       <HeaderContainer />
       <NavbarContainer />
       <div className="app-wrapper-content">
-        <Route
-          exact
-          path="/dialogs"
-          render={() => <DialogsContainer store={props.store} />}
-        />
-        <Route
-          path="/profile/:userId?"
-          render={() => <ProfileContainer store={props.store} />}
-        />
+        <Route exact path="/dialogs" render={() => <DialogsContainer />} />
+        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
         <Route path="/users" render={() => <UsersContainer />} />
+        <Route path="/login" render={() => <Login />} />
       </div>
     </div>
   );

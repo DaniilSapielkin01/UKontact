@@ -10,6 +10,8 @@ import {
   getUsers
 } from "../redux/index";
 import { Users } from "../components/index";
+import { compose } from "redux";
+import { withAuthRedirect } from "../components/HOC/withAuthRedirect";
 
 class UsersComponent extends React.Component {
   componentDidMount() {
@@ -53,7 +55,7 @@ const mapDispatchToProps = {
   toggleFollowingProgress,
   getUsers
 };
-export const UsersContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+export const UsersContainer = compose(
+  withAuthRedirect,
+  connect(mapStateToProps, mapDispatchToProps)
 )(UsersComponent);
