@@ -12,7 +12,7 @@ export const ProfileInfo = props => {
 
   return (
     <div className={s.profileInfo}>
-      Статус:
+      <h3>Статус:</h3>
       <ProfileStatus status={"Hello"} />
     </div>
   );
