@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import { Profile } from "../components/Profile/Profile";
 import { connect } from "react-redux";
-import { getUserProfile } from "../redux/index";
+import { getUserProfile, getStatus, updateStatus } from "../redux/index";
 import { compose } from "redux";
 
 class ProfileComponent extends React.Component {
@@ -13,19 +13,30 @@ class ProfileComponent extends React.Component {
       userId = 2;
     }
     this.props.getUserProfile(userId);
+    this.props.getStatus(userId);
   }
 
   render() {
-
-    return <Profile {...this.props} profile={this.props.profile} />;
+    console.log(this.props.profile);
+    return (
+      <Profile
+        {...this.props}
+        profile={this.props.profile}
+        status={this.props.status}
+        updateStatus={this.props.updateStatus}
+      />
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  status: state.profilePage.status
 });
 const mapDispatchToProps = {
-  getUserProfile
+  getUserProfile,
+  getStatus,
+  updateStatus
 };
 
 export const ProfileContainer = compose(

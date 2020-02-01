@@ -56,6 +56,6 @@ const mapDispatchToProps = {
   getUsers
 };
 export const UsersContainer = compose(
-  withAuthRedirect,
+  // withAuthRedirect,
   connect(mapStateToProps, mapDispatchToProps)
 )(UsersComponent);

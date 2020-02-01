@@ -6,14 +6,15 @@ import { ProfileStatus } from "./ProfileStatus";
 
 export const ProfileInfo = props => {
   if (props.profile) {
-    return alert("not");
+    return <Spin />;
   }
   console.log(props);
 
   return (
     <div className={s.profileInfo}>
+      {/* <img src={props.profile.photos.large} /> */}
       <h3>Статус:</h3>
-      <ProfileStatus status={"Hello"} />
+      <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
     </div>
   );
 };
