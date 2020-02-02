@@ -9,23 +9,26 @@ import {
   ProfileContainer,
   HeaderContainer
 } from "./container/index";
-import { Login } from "./components";
+import { LogContainer } from "./components";
 
-function App() {
-  // console.log(props.store);
+class App extends React.Component {
+  // componentDidMount() {
+  //   this.props.getAuthUserData();
+  // }
 
-  return (
-    <div className="wrapper">
-      <HeaderContainer />
-      <NavbarContainer />
-      <div className="app-wrapper-content">
-        <Route exact path="/dialogs" render={() => <DialogsContainer />} />
-        <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-        <Route path="/users" render={() => <UsersContainer />} />
-        <Route path="/login" render={() => <Login />} />
+  render() {
+    return (
+      <div className="wrapper">
+        <HeaderContainer />
+        <NavbarContainer />
+        <div className="app-wrapper-content">
+          <Route exact path="/dialogs" render={() => <DialogsContainer />} />
+          <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+          <Route path="/users" render={() => <UsersContainer />} />
+          <Route path="/login" render={() => <LogContainer />} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
 export default App;

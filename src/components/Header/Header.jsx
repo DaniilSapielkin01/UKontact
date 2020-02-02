@@ -12,7 +12,13 @@ export const Header = props => {
       />
       <div className={s.nameLogo}>UKontact</div>
       <div className={s.toLogin}>
-        {props.isAuth ? props.login : <Link to={"/login"}>To Login</Link>}
+        {props.isAuth ? (
+          <div>
+            {props.login} - <button onClick={props.logout}>Logout</button>
+          </div>
+        ) : (
+          <Link to={"/login"}>To Login</Link>
+        )}
       </div>
     </header>
   );
