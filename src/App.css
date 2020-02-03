@@ -34,9 +34,11 @@ body {
 /* preloader */
 .ant-spin-spinning {
   width: 100%;
+  margin: 50px;
 }
 
 .ant-spin-dot-spin {
-  height: 30px;
-  width: 30px;
+  margin: 50px;
+  height: 35px;
+  width: 35px;
 }

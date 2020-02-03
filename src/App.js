@@ -1,6 +1,8 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
+import { compose } from "redux";
 
+import { Spin } from "antd";
 import "./App.css";
 import {
   DialogsContainer,
@@ -10,13 +12,17 @@ import {
   HeaderContainer
 } from "./container/index";
 import { LogContainer } from "./components";
+import { connect } from "react-redux";
+import { initializeApp } from "./redux/index";
 
 class App extends React.Component {
-  // componentDidMount() {
-  //   this.props.getAuthUserData();
-  // }
-
+  componentDidMount() {
+    this.props.initializeApp();
+  }
   render() {
+    // if (!this.props.initialized) {
+    //   return <Spin />;
+    // }
     return (
       <div className="wrapper">
         <HeaderContainer />
@@ -31,4 +37,14 @@ class App extends React.Component {
     );
   }
 }
-export default App;
+const mapStateToProps = state => ({
+  initialized: state.app.initialized
+});
+
+const mapDispatchToProps = {
+  initializeApp
+};
+export const AppContainer = compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(App);

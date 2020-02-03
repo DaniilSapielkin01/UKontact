@@ -1,16 +1,20 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import { connect } from "react-redux";
 
 import { Profile } from "../components/Profile/Profile";
-import { connect } from "react-redux";
 import { getUserProfile, getStatus, updateStatus } from "../redux/index";
-import { compose } from "redux";
 
 class ProfileComponent extends React.Component {
   componentDidMount() {
+    //Не пускает к профилю если не залогинен
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 3;
+      userId = this.props.authorizedUserId;
+      if (!userId) {
+        this.props.history.push("/login");
+      }
     }
     this.props.getUserProfile(userId);
     this.props.getStatus(userId);

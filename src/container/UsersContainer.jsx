@@ -7,11 +7,17 @@ import {
   unfollow,
   setCurrentPage,
   toggleFollowingProgress,
-  getUsers
+  requiestUsers,// заменен  getUserss
+  getUsers,
+  getTotalUsersCount,
+  getPageSize,
+  getIsFetching,
+  getCurrentPage,
+  getFollowingInProgress
 } from "../redux/index";
 import { Users } from "../components/index";
 import { compose } from "redux";
-import { withAuthRedirect } from "../components/HOC/withAuthRedirect";
+// import { withAuthRedirect } from "../components/HOC/withAuthRedirect";
 
 class UsersComponent extends React.Component {
   componentDidMount() {
@@ -39,13 +45,21 @@ class UsersComponent extends React.Component {
   }
 }
 //users: state. ==> usersPage <==this in redux/ReduxStore name in store branch with info for users.
+// const mapStateToProps = state => ({
+//   users: state.usersPage.users,
+//   pageSize: state.usersPage.pageSize,
+//   totalUsersCount: state.usersPage.totalUsersCount,
+//   currentPage: state.usersPage.currentPage,
+//   isFetching: state.usersPage.isFetching,
+//   followingInProgress: state.usersPage.followingInProgress
+// });
 const mapStateToProps = state => ({
-  users: state.usersPage.users,
-  pageSize: state.usersPage.pageSize,
-  totalUsersCount: state.usersPage.totalUsersCount,
-  currentPage: state.usersPage.currentPage,
-  isFetching: state.usersPage.isFetching,
-  followingInProgress: state.usersPage.followingInProgress
+  users: getUsers(state),
+  pageSize: getPageSize(state),
+  totalUsersCount: getTotalUsersCount(state),
+  currentPage: getCurrentPage(state),
+  isFetching: getIsFetching(state),
+  followingInProgress: getFollowingInProgress(state)
 });
 
 const mapDispatchToProps = {

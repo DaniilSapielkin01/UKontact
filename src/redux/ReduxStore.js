@@ -6,7 +6,8 @@ import {
   ProflieReducer,
   DialogsReducer,
   SideBarReducer,
-  UserReducer
+  UserReducer,
+  AppReducer
 } from "./index";
 import { AuthReducer } from "./AuthReducer";
 
@@ -16,7 +17,8 @@ let reducers = combineReducers({
   sideBar: SideBarReducer,
   usersPage: UserReducer,
   auth: AuthReducer,
-  form: formReducer
+  form: formReducer,
+  app: AppReducer
 });
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware));
