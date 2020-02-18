@@ -2,7 +2,7 @@ import React from "react";
 import { Route, withRouter } from "react-router-dom";
 import { compose } from "redux";
 
-import { Spin } from "antd";
+// import { Spin } from "antd";
 import "./App.css";
 import {
   DialogsContainer,
@@ -14,6 +14,11 @@ import {
 import { LogContainer } from "./components";
 import { connect } from "react-redux";
 import { initializeApp } from "./redux/index";
+
+// const DialogsContainer = React.lazy(
+//   async () => await import("./container/index")
+// );
+// const ProfileContainer = React.lazy(() => import("./container/index"));
 
 class App extends React.Component {
   componentDidMount() {
@@ -29,6 +34,7 @@ class App extends React.Component {
         <NavbarContainer />
         <div className="app-wrapper-content">
           <Route exact path="/dialogs" render={() => <DialogsContainer />} />
+
           <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
           <Route path="/users" render={() => <UsersContainer />} />
           <Route path="/login" render={() => <LogContainer />} />

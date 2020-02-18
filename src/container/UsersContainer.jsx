@@ -7,7 +7,7 @@ import {
   unfollow,
   setCurrentPage,
   toggleFollowingProgress,
-  requiestUsers,// заменен  getUserss
+  requiestUsers, // заменен  getUserss
   getUsers,
   getTotalUsersCount,
   getPageSize,
@@ -17,7 +17,6 @@ import {
 } from "../redux/index";
 import { Users } from "../components/index";
 import { compose } from "redux";
-// import { withAuthRedirect } from "../components/HOC/withAuthRedirect";
 
 class UsersComponent extends React.Component {
   componentDidMount() {
@@ -67,7 +66,7 @@ const mapDispatchToProps = {
   unfollow,
   setCurrentPage,
   toggleFollowingProgress,
-  getUsers
+  getUsers: requiestUsers
 };
 export const UsersContainer = compose(
   // withAuthRedirect,

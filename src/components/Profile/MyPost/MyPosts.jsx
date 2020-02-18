@@ -11,10 +11,15 @@ import { Textarea } from "../../index";
 
 const maxLength10 = maxLengthCreator(10);
 
-export const MyPosts = props => {
-  let postsElements = props.posts.map(p => (
-    <Post message={p.message} likeCount={p.likeCount} />
-  ));
+export const MyPosts = React.memo(props => {
+  // При использовании классовой компоненты
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return nextProps != this.props || nextState != this.state;
+  // }
+
+  let postsElements = [...props.posts]
+    .reverse() //перевернула копию массива (мутабельность присуцтвует)
+    .map(p => <Post message={p.message} likeCount={p.likeCount} />);
   const onAddPost = values => {
     // Field name={"newPostText"} =>values.newPostText
     props.addPost(values.newPostText);
@@ -27,7 +32,7 @@ export const MyPosts = props => {
       <div className={s.posts}>{postsElements}</div>
     </div>
   );
-};
+});
 
 const AddNewPostForm = props => {
   return (
@@ -37,7 +42,6 @@ const AddNewPostForm = props => {
           name={"newPostText"}
           component={Textarea}
           validate={[requiredField, maxLength10]}
- 
         />
         <button>Add post</button>
       </div>

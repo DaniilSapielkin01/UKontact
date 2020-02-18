@@ -1,4 +1,5 @@
 import { usersAPI } from "../api/api";
+import { updateObjectArray } from "../utils/objectHalpers";
 
 const SET_USERS = "SET_USERS";
 const FOLLOW = "FOLLOW";
@@ -22,23 +23,29 @@ export const UserReducer = (state = initialState, action) => {
     case FOLLOW:
       return {
         ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userId) {
-            return { ...u, followed: true };
-          }
-          return u;
+        users: updateObjectArray(state.users, action.userId, "id", {
+          followed: true
         })
+        // users: state.users.map(u => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: true };
+        //   }
+        //   return u;
+        // })
       };
 
     case UNFOLLOW:
       return {
         ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userId) {
-            return { ...u, followed: false };
-          }
-          return u;
+        users: updateObjectArray(state.users, action.userId, "id", {
+          followed: false
         })
+        // users: state.users.map(u => {
+        //   if (u.id === action.userId) {
+        //     return { ...u, followed: false };
+        //   }
+        //   return u;
+        // })
       };
     case SET_USERS:
       return {
@@ -109,39 +116,46 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
 //thunk
 //getUsersThunkCreator => getUsers
 export const requiestUsers = (page, pageSize) => {
-  return dispatch => {
+  return async dispatch => {
     dispatch(setIsFetching(true));
     dispatch(setCurrentPage(page));
-    usersAPI.getUsers(page, pageSize).then(data => {
-      dispatch(setIsFetching(false));
-      dispatch(setUsers(data.items));
-      dispatch(setUsersTotalCount(data.totalCount));
-    });
+    let data = await usersAPI.getUsers(page, pageSize);
+    dispatch(setIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setUsersTotalCount(data.totalCount));
   };
 };
 //thunk
-export const follow = userId => {
-  return dispatch => {
-    dispatch(toggleFollowingProgress(true, userId));
+//followUnfolloFlow => забрал дулбирующийся код
+const followUnfolloFlow = async (
+  dispatch,
+  userId,
+  apiMethod,
+  actionCreator
+) => {
+  dispatch(toggleFollowingProgress(true, userId));
+  let response = await apiMethod(userId);
 
-    usersAPI.follow(userId).then(response => {
-      if (response.data.resultCode == 0) {
-        dispatch(followSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
+  if (response.data.resultCode == 0) {
+    dispatch(actionCreator(userId));
+  }
+  dispatch(toggleFollowingProgress(false, userId));
+};
+
+export const follow = userId => {
+  return async dispatch => {
+    let apiMethod = usersAPI.follow.bind(userId);
+    let actionCreator = followSuccess;
+
+    followUnfolloFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };
 //thunk
 export const unfollow = userId => {
-  return dispatch => {
-    dispatch(toggleFollowingProgress(true, userId));
+  return async dispatch => {
+    let apiMethod = usersAPI.unfollow.bind(userId);
+    let actionCreator = unfollowSuccess;
 
-    usersAPI.unfollow(userId).then(response => {
-      if (response.data.resultCode == 0) {
-        dispatch(unfollowSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
+    followUnfolloFlow(dispatch, userId, apiMethod, actionCreator);
   };
 };

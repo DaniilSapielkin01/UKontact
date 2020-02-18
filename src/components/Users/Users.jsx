@@ -17,7 +17,7 @@ export const Users = props => {
     currentPage,
     toggleFollowingProgress
   } = props;
-  console.log(props);
+
 
   return (
     <div className="">
