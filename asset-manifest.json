@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/UKontact/static/css/main.b88038ab.chunk.css",
+    "main.js": "/UKontact/static/js/main.13ae3733.chunk.js",
+    "main.js.map": "/UKontact/static/js/main.13ae3733.chunk.js.map",
+    "runtime-main.js": "/UKontact/static/js/runtime-main.e7cbb252.js",
+    "runtime-main.js.map": "/UKontact/static/js/runtime-main.e7cbb252.js.map",
+    "static/css/2.35f98baf.chunk.css": "/UKontact/static/css/2.35f98baf.chunk.css",
+    "static/js/2.92264776.chunk.js": "/UKontact/static/js/2.92264776.chunk.js",
+    "static/js/2.92264776.chunk.js.map": "/UKontact/static/js/2.92264776.chunk.js.map",
+    "index.html": "/UKontact/index.html",
+    "precache-manifest.37ff52a98f987efd63e195d6669a5332.js": "/UKontact/precache-manifest.37ff52a98f987efd63e195d6669a5332.js",
+    "service-worker.js": "/UKontact/service-worker.js",
+    "static/css/2.35f98baf.chunk.css.map": "/UKontact/static/css/2.35f98baf.chunk.css.map",
+    "static/css/main.b88038ab.chunk.css.map": "/UKontact/static/css/main.b88038ab.chunk.css.map",
+    "static/js/2.92264776.chunk.js.LICENSE": "/UKontact/static/js/2.92264776.chunk.js.LICENSE",
+    "static/media/index.css": "/UKontact/static/media/fontello.b722eaac.woff",
+    "static/media/user-avatar.jpg": "/UKontact/static/media/user-avatar.932094ec.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e7cbb252.js",
+    "static/css/2.35f98baf.chunk.css",
+    "static/js/2.92264776.chunk.js",
+    "static/css/main.b88038ab.chunk.css",
+    "static/js/main.13ae3733.chunk.js"
+  ]
+}
